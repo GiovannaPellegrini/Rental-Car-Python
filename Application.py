@@ -4,12 +4,13 @@ import os
 def limpar_tela():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def precione_continuar():
-    input("Precione Enter para continuar...")
+def pressione_continuar():
+    input("Pressione Enter para continuar...")
 
 
 ####### TITULO DO SISTEMA
 def titulo():
+    limpar_tela()
     print("#"*50)
     print("#"+ " "*15 +"LOCADORA DE CARROS" + " "*15+"#")
     print("#"*50)
@@ -28,6 +29,11 @@ def cadastro_clientes():
     ano_nascimento = int(input("Ano de nascimento: "))
     email = input("E-mail: ")
 
+def cadastro_veículos():
+    modelo = input("Modelo: ")
+    ano = int(input("Ano: "))
+    cor = input("Cor: ")
+
 while True:
     limpar_tela()
     titulo()
@@ -37,25 +43,27 @@ while True:
 
     match opcao:
         case 1:
-            limpar_tela()
+            titulo()
             print("\n#### CADASTRO DE CLIENTES ####")
             cadastro_clientes()
-            precione_continuar()
+            pressione_continuar()
 
         case 2:
+            titulo()
             print("\n#CADASTRO DE VEÍCULOS")
-            precione_continuar()
+            cadastro_veículos()   
+            pressione_continuar()
 
         case 3:
             print("\n#ALUGAR CARRO")
-            precione_continuar()
+            pressione_continuar()
 
         case 4:
             print("\n#SAIR")
             
         case 5:
             print("\n#OPÇÃO INVÁLIDA")
-            precione_continuar()
+            pressione_continuar()
 
 
 
