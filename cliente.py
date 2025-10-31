@@ -7,4 +7,3 @@ class Cliente:
     ano_nascimento: int
     email: str
     
-        

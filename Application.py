@@ -2,30 +2,47 @@ import os
 
 from cliente import Cliente
 
-####### FUNÇÕES GLOBAIS
+from veiculo import Veiculo
+
+####### VARIÁVEIS GLOBAIS
+clientes = []
+veiculos = []
+
+#função para limpar a tela
 def limpar_tela():
     os.system('cls' if os.name == 'nt' else 'clear')
 
+#função para pressionar continuar
 def pressione_continuar():
     input("Pressione Enter para continuar...")
 
-
-####### TITULO DO SISTEMA
+#titulo do sistema
 def titulo():
     limpar_tela()
     print("#"*50)
     print("#"+ " "*15 +"LOCADORA DE CARROS" + " "*15+"#")
     print("#"*50)
 
-####### MENU PRINCIPAL
+def lista_clientes():
+    print("\n#LISTA DE CLIENTES")
+    print("-"*80)
+    print(f"| {'Código':^8} | {'Nome':^20} | {'Ano de Nasc.':^15} | {'E-mail':^25} |")
+    print("-"*80)
+    for cliente in clientes:
+        print(f"| {cliente.codigo:^8} | {cliente.nome:<20} | {cliente.ano_nascimento:^15} | {cliente.email:<25} |")
+    print("-"*80)
+
+#menu principal
 def menu():
     print("\n#Menu de Opções")
     print("1 - Cadastro de Clientes")
-    print("2 - Cadastro de Veículos")
-    print("3 - Alugar Carro")
-    print("4 - Sair do Sistema")
+    print("2 - Lista de Clientes")
+    print("3 - Cadastro de Veículos")
+    print("4 - Lista de Veículos")
+    print("5 - Alugar Carro")
+    print("6 - Sair do Sistema")
 
-####### FUNÇÕES DO SISTEMA
+#funções de cadastro de clientes
 def cadastro_clientes():
 
     codigo_cliente = int(input("Código do cliente: "))
@@ -33,21 +50,28 @@ def cadastro_clientes():
     ano_nascimento = int(input("Ano de nascimento: "))
     email = input("E-mail: ")
 
-    cliente1 = Cliente(codigo_cliente, nome, ano_nascimento,email)
+    cliente = Cliente(codigo_cliente, nome, ano_nascimento,email)
+    clientes.append(cliente)
+    
+    print("\nCliente cadastrado com sucesso!")
+    
 
-    print("Cliente cadastrado com sucesso!")
-    print(cliente1)
-
-
-
-
+#função de cadastro de veículos
 def cadastro_veículos():
+    
     codigo_veiculo = int(input("Código do veículo: "))
     modelo = input("Modelo: ")
     ano = int(input("Ano: "))
     cor = input("Cor: ")
+    preco = float(input("Preço por dia: "))
 
+    veiculo = Veiculo(codigo_veiculo,modelo,ano,cor,preco)
+    veiculos.append(veiculo)
+    print("\nVeículo cadastrado com sucesso!")
+
+   # execução do sistema
 while True:
+
     limpar_tela()
     titulo()
     menu()
@@ -63,18 +87,23 @@ while True:
 
         case 2:
             titulo()
+            lista_clientes()
+            pressione_continuar()
+
+        case 3:
+            titulo()
             print("\n#CADASTRO DE VEÍCULOS")
             cadastro_veículos()   
             pressione_continuar()
 
-        case 3:
+        case 5:
             print("\n#ALUGAR CARRO")
             pressione_continuar()
 
-        case 4:
+        case 6:
             print("\n#SAIR")
             
-        case 5:
+        case _:
             print("\n#OPÇÃO INVÁLIDA")
             pressione_continuar()
 
