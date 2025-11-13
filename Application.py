@@ -32,6 +32,16 @@ def lista_clientes():
         print(f"| {cliente.codigo:^8} | {cliente.nome:<20} | {cliente.ano_nascimento:^15} | {cliente.email:<25} |")
     print("-"*80)
 
+def lista_veiculos():
+    print("\n#LISTA DE VEÍCULOS")
+    print("-"*94)
+    print(f"| {'Código':^8} | {'Modelo':^20} | {'Ano':^15} | {'Cor':^25} | {'Preço':^10} |")
+    print("-"*94)
+    for veiculo in veiculos:
+        print(f"| {veiculo.codigo:^8} | {veiculo.modelo:<20} | {veiculo.ano:^15} | {veiculo.cor:<25} | {veiculo.preco:^10} |")
+    print("-"*94)
+
+    
 #menu principal
 def menu():
     print("\n#Menu de Opções")
@@ -94,6 +104,11 @@ while True:
             titulo()
             print("\n#CADASTRO DE VEÍCULOS")
             cadastro_veículos()   
+            pressione_continuar()
+        
+        case 4: 
+            titulo()
+            lista_veiculos()
             pressione_continuar()
 
         case 5:
