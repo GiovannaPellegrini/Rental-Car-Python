@@ -4,24 +4,13 @@ from cliente import Cliente
 
 from veiculo import Veiculo
 
+import layout 
+
+import veiculo_service
+
+
 ####### VARIÁVEIS GLOBAIS
 clientes = []
-veiculos = []
-
-#função para limpar a tela
-def limpar_tela():
-    os.system('cls' if os.name == 'nt' else 'clear')
-
-#função para pressionar continuar
-def pressione_continuar():
-    input("Pressione Enter para continuar...")
-
-#titulo do sistema
-def titulo():
-    limpar_tela()
-    print("#"*50)
-    print("#"+ " "*15 +"LOCADORA DE CARROS" + " "*15+"#")
-    print("#"*50)
 
 def lista_clientes():
     print("\n#LISTA DE CLIENTES")
@@ -32,25 +21,6 @@ def lista_clientes():
         print(f"| {cliente.codigo:^8} | {cliente.nome:<20} | {cliente.ano_nascimento:^15} | {cliente.email:<25} |")
     print("-"*80)
 
-def lista_veiculos():
-    print("\n#LISTA DE VEÍCULOS")
-    print("-"*94)
-    print(f"| {'Código':^8} | {'Modelo':^20} | {'Ano':^15} | {'Cor':^25} | {'Preço':^10} |")
-    print("-"*94)
-    for veiculo in veiculos:
-        print(f"| {veiculo.codigo:^8} | {veiculo.modelo:<20} | {veiculo.ano:^15} | {veiculo.cor:<25} | {veiculo.preco:^10} |")
-    print("-"*94)
-
-    
-#menu principal
-def menu():
-    print("\n#Menu de Opções")
-    print("1 - Cadastro de Clientes")
-    print("2 - Lista de Clientes")
-    print("3 - Cadastro de Veículos")
-    print("4 - Lista de Veículos")
-    print("5 - Alugar Carro")
-    print("6 - Sair do Sistema")
 
 #funções de cadastro de clientes
 def cadastro_clientes():
@@ -66,61 +36,49 @@ def cadastro_clientes():
     print("\nCliente cadastrado com sucesso!")
     
 
-#função de cadastro de veículos
-def cadastro_veículos():
-    
-    codigo_veiculo = int(input("Código do veículo: "))
-    modelo = input("Modelo: ")
-    ano = int(input("Ano: "))
-    cor = input("Cor: ")
-    preco = float(input("Preço por dia: "))
 
-    veiculo = Veiculo(codigo_veiculo,modelo,ano,cor,preco)
-    veiculos.append(veiculo)
-    print("\nVeículo cadastrado com sucesso!")
-
-   # execução do sistema
+# execução do sistema
 while True:
 
-    limpar_tela()
-    titulo()
-    menu()
+    layout.limpar_tela()
+    layout.titulo()
+    layout.menu()
 
     opcao=int(input("\nInforme uma opção: "))
 
     match opcao:
         case 1:
-            titulo()
+            layout.titulo()
             print("\n#### CADASTRO DE CLIENTES ####")
             cadastro_clientes()
-            pressione_continuar()
+            layout.pressione_continuar()
 
         case 2:
-            titulo()
+            layout.titulo()
             lista_clientes()
-            pressione_continuar()
+            layout.pressione_continuar()
 
         case 3:
-            titulo()
+            layout.titulo()
             print("\n#CADASTRO DE VEÍCULOS")
-            cadastro_veículos()   
-            pressione_continuar()
+            veiculo_service.cadastro_veiculos()   
+            layout.pressione_continuar()
         
         case 4: 
-            titulo()
-            lista_veiculos()
-            pressione_continuar()
+            layout.titulo()
+            veiculo_service.lista_veiculos()
+            layout.pressione_continuar()
 
         case 5:
             print("\n#ALUGAR CARRO")
-            pressione_continuar()
+            layout.pressione_continuar()
 
         case 6:
             print("\n#SAIR")
             
         case _:
             print("\n#OPÇÃO INVÁLIDA")
-            pressione_continuar()
+            layout.pressione_continuar()
 
 
 
