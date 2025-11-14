@@ -1,4 +1,4 @@
-from veiculo import Veiculo
+from model.veiculo import Veiculo
 
 veiculos = []
 
