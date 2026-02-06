@@ -3,7 +3,7 @@ from model.cliente import Cliente
 clientes = []
 
 #funções de cadastro de clientes
-def cadastro_clientes():
+def cadastrar_cliente(): 
 
     codigo_cliente = int(input("Código do cliente: "))
     nome = input("Nome: ")
@@ -17,7 +17,8 @@ def cadastro_clientes():
 
 
 #função para listar clientes
-def lista_clientes():
+def gerar_lista_clientes():
+
     print("\n#LISTA DE CLIENTES")
     print("-"*80)
     print(f"| {'Código':^8} | {'Nome':^20} | {'Ano de Nasc.':^15} | {'E-mail':^25} |")
@@ -25,3 +26,7 @@ def lista_clientes():
     for cliente in clientes:
         print(f"| {cliente.codigo:^8} | {cliente.nome:<20} | {cliente.ano_nascimento:^15} | {cliente.email:<25} |")
     print("-"*80)
+
+
+def pegar_clientes():
+    return clientes  

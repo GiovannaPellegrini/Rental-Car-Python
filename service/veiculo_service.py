@@ -25,3 +25,6 @@ def lista_veiculos():
     for veiculo in veiculos:
         print(f"| {veiculo.codigo:^8} | {veiculo.modelo:<20} | {veiculo.ano:^15} | {veiculo.cor:<25} | {veiculo.preco:^10} |")
     print("-"*94)
+
+def pegar_veiculos():
+    return veiculos

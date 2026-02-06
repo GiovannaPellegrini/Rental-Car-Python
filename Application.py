@@ -1,9 +1,10 @@
 from model.cliente import Cliente
 from model.veiculo import Veiculo
-from service.cliente_service import cadastro_clientes,lista_clientes
+from service.cliente_service import cadastrar_cliente,gerar_lista_clientes
 
 import service.layout_service as layout_service 
 import service.veiculo_service as veiculo_service
+import service.aluguel_service as aluguel_service
 
 # execução do sistema
 while True:
@@ -18,12 +19,12 @@ while True:
         case 1:
             layout_service.titulo()
             print("\n#### CADASTRO DE CLIENTES ####")
-            cadastro_clientes()
+            cadastrar_cliente()
             layout_service.pressione_continuar()
 
         case 2:
             layout_service.titulo()
-            lista_clientes()
+            gerar_lista_clientes()
             layout_service.pressione_continuar()
 
         case 3:
@@ -39,6 +40,7 @@ while True:
 
         case 5:
             print("\n#ALUGAR CARRO")
+            aluguel_service.alugar_veiculo()
             layout_service.pressione_continuar()
 
         case 6:
